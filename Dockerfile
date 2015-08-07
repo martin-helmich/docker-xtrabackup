@@ -8,7 +8,6 @@ RUN apt-get install -y percona-xtrabackup
 
 VOLUME /var/backup/mysql
 
-CMD mkdir -p /var/backups/mysql/$(date +%Y%m%d) && \
-    xtrabackup --backup --datadir /var/lib/mysql --target-dir=/var/backups/mysql/$(date +%Y%m%d) && \
-    xtrabackup --prepare --target-dir=/var/backups/mysql/$(date +%Y%m%d) && \
-    xtrabackup --prepare --target-dir=/var/backups/mysql/$(date +%Y%m%d)
+CMD xtrabackup --backup --datadir /var/lib/mysql --target-dir=/target && \
+    xtrabackup --prepare --target-dir=/target && \
+    xtrabackup --prepare --target-dir=/target
