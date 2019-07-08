@@ -20,8 +20,16 @@ if [[ -n "${@}" ]]; then
     ${XTRABACKUP} ${@}
 else
     # run default backup routine
-    ${XTRABACKUP} --backup --datadir ${XTRABACKUP_SOURCE_DIR} --target-dir=${XTRABACKUP_TARGET_DIR}
-    ${XTRABACKUP} --prepare --target-dir=${XTRABACKUP_TARGET_DIR}
+    ${XTRABACKUP} \
+        --no-version-check \
+        --backup \
+        --datadir=${XTRABACKUP_SOURCE_DIR} \
+        --target-dir=${XTRABACKUP_TARGET_DIR}
+
+    ${XTRABACKUP} \
+        --no-version-check \
+        --prepare \
+        --target-dir=${XTRABACKUP_TARGET_DIR}
 fi
 
 exit 0
