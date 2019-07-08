@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 [[ -n "${DEBUG}" ]] && set -x
-set -e
+set -ex
 
 XTRABACKUP="$(command -v xtrabackup)"
 if [[ ! -x "${XTRABACKUP}" ]]; then
